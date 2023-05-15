@@ -1,0 +1,20 @@
+services:
+  # FastAPI Server
+  - type: web
+    name: retrieval-plugin-server 
+    region: oregon
+    plan: free
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars: 
+      - key: DATASTORE
+        value: weaviate
+      - key: BEARER_TOKEN
+        generateValue: true 
+      # will be promtped to add this in the UI on deployment
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: WEAVIATE_URL
+        sync: false
+      - key: WEAVIATE_API_KEY
+        sync: false
